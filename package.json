@@ -9,12 +9,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.6.0",
-    "ejs": "^2.5.7",
+    "async": "^2.6.1",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
     "express": "^4.16.3",
-    "mysql": "^2.15.0"
+    "hapi": "^17.5.2",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.38.0",
+    "vision": "^5.3.3"
   },
   "devDependencies": {
-    "nodemon": "^1.17.2"
+    "nodemon": "^1.18.2"
   }
 }
