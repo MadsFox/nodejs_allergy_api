@@ -1,12 +1,37 @@
 var db = require('../db.js');
+var sequelize = require('sequelize');
 
-//exports.create = function(){};
-//
-//exports.getAll = function(done){
-//  db.get().query('SELECT * FROM allergies', function(err, rows){
-//    if (err) return done(err)
-//    done(null, rows)
-//  })
-//};
-//
-//exports.getAllByUser = function(){};
+const ingredients = sequelize.define('allergies', {
+  id: { type: sequelize.INTEGER, primaryKey: true},
+  name: sequelize.STRING,
+  description: sequelize.STRING,
+});
+
+exports.create = function(name, description){
+  User.upsert({
+    name: name,
+    userid: userid
+  });
+}
+
+exports.getAll = function(done){
+  User.findAll();
+}
+
+exports.getAllById = function(id){
+  User.findAll({
+    where: {
+      id: id
+    }
+  });
+}
+
+exports.getAllByName = function(name){
+  User.findAll({
+    where: {
+      name: {
+        [Op.iLike]: '%' + name + '%'
+      }
+    }
+  });
+}

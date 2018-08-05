@@ -1,7 +1,3 @@
-//var express = require('express');
-//var router = express.Router();
-var server = require('hapi');
-
 var Producers = require('../models/producers');
 
 module.exports= [

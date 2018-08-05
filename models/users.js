@@ -1,27 +1,31 @@
 var db = require('../db.js');
+var sequelize = require('sequelize');
 
-const User = sequelize.define('user', {
-  id: sequelize.INTEGER,
+const User = sequelize.define('users', {
+  id: { type: sequelize.INTEGER, primaryKey: true},
   username: sequelize.STRING,
   firstname: sequelize.STRING,
   lastname: sequelize.STRING,
   picture: sequelize.BLOB
 })
 
-//exports.create = function(done){};
-//
-//exports.getById = function(id, done){
-//  db.get().query('SELECT * FROM users WHERE id = ?', id, function(err, rows){
-//    if (err) return done(err)
-//    done(null, rows)
-//  })
-//};
-//
-//exports.getAll = function(done){
-//  db.get().query('SELECT * FROM users', function(err, rows){
-//    if (err) return done(err)
-//    done(null, rows)
-//  })
-//};
-//
-//
+exports.create = function(username, firstname, lastname, picture){
+  User.upsert({
+    username: username,
+    firstname: firstname,
+    lastname: lastname,
+    picture: picture
+  });
+}
+
+exports.getAll = function(done){
+  User.findAll();
+}
+
+exports.getAllUsername = function(username){
+  User.findAll({
+    where: {
+      username: username
+    }
+  });
+}

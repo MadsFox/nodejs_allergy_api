@@ -1,6 +1,8 @@
 var producers = require('./producers');
+var products = require('./products');
+var users = require('./users');
 
-var index = [{
+var index = {
   method: 'GET',
   path: '/',
   //handler: {
@@ -8,8 +10,8 @@ var index = [{
   //}
   handler: function(request, h) {
     console.log('Returning index view');
-    return h.view('./index')
+    return h.view('./views/index.ejs')
   }
-}];
+};
 
-module.exports = [].concat(index, producers);
+module.exports = [].concat(index, producers, products, users);
